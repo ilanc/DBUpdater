@@ -7,24 +7,26 @@ Problem is that EF Core can _only_ be used with dependency injection. Means you 
 
 ## Tools notes
 You can only use one at a time - i.e. either package manager console (`Add-Migration`, `Update-Database`) or dotnet CLI (`dotnet ef migrations / database`). Must either install:
-*  (package manager console)
-* or (dotnet CLI)
+* EntityFrameworkCore.Tools (package manager console)
+* or EntityFrameworkCore.Tools**.DotNet** (dotnet CLI)
 
 ## How to
 * Install packages
-```
-Install-Package Microsoft.EntityFrameworkCore.SqlServer
-Install-Package Microsoft.EntityFrameworkCore.Tools.DotNet
-```
-or
-```
-Install-Package Microsoft.EntityFrameworkCore.SqlServer
-Install-Package Microsoft.EntityFrameworkCore.Design
-```
-Then manually edit .csproj and add:
-```xml
-<DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.1" />
-```
+    * Package manager console
+    ```
+    Install-Package Microsoft.EntityFrameworkCore.SqlServer
+    Install-Package Microsoft.EntityFrameworkCore.Tools
+    ```
+    * or dotnet CLI
+    ```
+    Install-Package Microsoft.EntityFrameworkCore.SqlServer
+    Install-Package Microsoft.EntityFrameworkCore.Design
+    #Install-Package Microsoft.EntityFrameworkCore.Tools.DotNet # doesn't work
+    ```
+    Then manually edit .csproj and add:
+    ```xml
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.1" />
+    ```
 
 * Optional = create DB and user
 	* createdb.sql
