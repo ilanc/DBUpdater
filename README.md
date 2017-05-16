@@ -30,14 +30,19 @@ Then manually edit .csproj and add:
 	* createdb.sql
 	* NOTE: make sure user has permissions to CREATE TABLE - e.g. dbowner
 * Migration
-	* `dotnet ef migrations -v add 0.1 --context ApplicationDbContext`
+	* `dotnet ef migrations -v add 0.1 --context BloggingContext`
 	* or
 	* `Add-Migration 0.1`
-* Update db
-	* `dotnet ef database update -v --context ApplicationDbContext`
+
+* Update the db schema
+	* `dotnet ef database update -v --context BloggingContext`
 	* or
 	* `Update-Database -Verbose -Debug`
-	
+
+* Create a .sql script to update the DB schema
+	* `dotnet ef migrations script [from] [to] -v`
+	* e.g. `dotnet ef migrations script 0.1 0.2 -v`
+
 ## Troubleshooting
 * May help to use windows auth rather than sql auth in connection string:
 ```
